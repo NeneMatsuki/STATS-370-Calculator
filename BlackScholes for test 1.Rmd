@@ -35,7 +35,25 @@ Expectation <- function(stdev, mu)
 {
   return(exp(mu + stdev/2))
 }
+
+IV <- function(p, s0, k, t, r, sigmas=seq(0,0.05,by=0.0001)){
+    # Calculates implied volatility
+    ps <- BlackScholes(s0,k,t,r,sigmas)
+    
+    sigma <- sigmas[round(ps,2)==p]
+    
+    p <- ps[round(ps,2)==p]
+    
+    return(c(sigma=sigma, p=p))
+}
 ```
+
+
+```{r}
+# Implied volatility example from notes.
+IV(5.3, 47.16, 42.5, 24, 0.0001947)
+```
+
 
 Implied Volatility (Example from 2020 mid sem)
 
