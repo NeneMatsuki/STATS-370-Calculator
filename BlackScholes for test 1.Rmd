@@ -1,0 +1,55 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+BlackScholes <- function(S0,K,T,r,sigma)
+{
+  d1 <- (log(S0/K) + ( r + (sigma ^2)/2) * T)/(sigma*sqrt(T))
+  print(d1)
+  d2 <- d1-sigma*sqrt(T)
+  print(d2)
+  
+  return(pnorm(d1)*S0 - pnorm(d2)*K*exp(-r*T))
+}
+
+PutCall <- function(Ct, r, T, K, S0)
+{
+  return(Ct + exp(-r * T) * K - S0)
+}
+
+Expectation <- function(sigma, mu)
+{
+  return(exp(mu + sigma/2))
+}
+```
+
+Expectation
+```{r}
+mu = 0.02
+sigma = 0.01
+Expectation(sigma,mu)
+
+```
+
+
+Black Scholes calculation
+prints d1,d2 and black scholes
+```{r}
+S0 = 100
+K = 90
+T = 0.25
+r = 0.1
+sigma = 0.4
+
+BlackScholes(S0,K,T,r,sigma)
+
+```
+
+Put call parity
+```{r}
+Ct = BlackScholes(S0,K,T,r,sigma)
+PutCall(Ct, r, T, K, S0)
+```
+
