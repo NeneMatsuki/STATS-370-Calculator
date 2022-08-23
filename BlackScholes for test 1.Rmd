@@ -19,17 +19,17 @@ PutCall <- function(Ct, r, T, K, S0)
   return(Ct + exp(-r * T) * K - S0)
 }
 
-Expectation <- function(sigma, mu)
+Expectation <- function(stdev, mu)
 {
-  return(exp(mu + sigma/2))
+  return(exp(mu + stdev/2))
 }
 ```
 
 Expectation
 ```{r}
 mu = 0.02
-sigma = 0.01
-Expectation(sigma,mu)
+stdev = 0.01
+Expectation(stdev,mu)
 
 ```
 
