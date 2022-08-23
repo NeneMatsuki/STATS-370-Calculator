@@ -36,7 +36,8 @@ Expectation <- function(stdev, mu)
   return(exp(mu + stdev/2))
 }
 
-IV <- function(p, s0, k, t, r, sigmas=seq(0,0.05,by=0.0001)){
+IV <- function(p, s0, k, t, r, sigmas=seq(0,0.05,by=0.0001)) #sigmas may need to be changed depending on question
+{
     # Calculates implied volatility
     ps <- BlackScholes(s0,k,t,r,sigmas)
     
