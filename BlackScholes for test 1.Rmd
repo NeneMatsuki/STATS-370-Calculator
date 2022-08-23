@@ -31,9 +31,9 @@ callFromPutCall <- function(P, r, T, K, S0)
   return(P - exp(-r * T) * K + S0)
 }
 
-Expectation <- function(sigma, mu)
+Expectation <- function(stdev, mu)
 {
-  return(exp(mu + sigma/2))
+  return(exp(mu + stdev/2))
 }
 ```
 
@@ -51,8 +51,8 @@ implied = sigmas[ round(p, 2) == 5.21]   # replace 5.21 with market price of que
 Expectation
 ```{r}
 mu = 0.02
-sigma = 0.01
-Expectation(sigma,mu)
+stdev = 0.01
+Expectation(stdev,mu)
 
 ```
 
